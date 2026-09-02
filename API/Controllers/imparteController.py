@@ -1,3 +1,4 @@
+from flask import jsonify
 from Services.imparteService import imparteService
 
 
@@ -5,7 +6,4 @@ class imparteController:
 
     def show():
         data = imparteService.show()
-        
-
-
-        # cyflz16
+        return jsonify(data), 200

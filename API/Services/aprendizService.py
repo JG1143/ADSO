@@ -18,6 +18,6 @@ class aprendizService:
         c  = current_app.mysql.connection.cursor()
         c.execute(sql)
         data = c.fetchall()
-        print(data)
-        # c.close()
-        return ""
+        data = [ Aprendiz(x[0], x[1], x[2], x[3])for x in data ]
+        c.close()
+        return data
