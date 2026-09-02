@@ -4,6 +4,7 @@ from Config import Config
 from Routes import loadRouters
 
 
+
 app = Flask(__name__)
 app.config.from_object(Config) 
 mysql = MySQL(app)

@@ -9,11 +9,11 @@ from .persona_bp import per_bp
 
 
 def loadRouters(app):
-    app.register_blueprint(apr_bp, url_prefix='/aprendiz')
-    app.register_blueprint(cur_bp, url_prefix='/curso')
-    app.register_blueprint(eva_bp, url_prefix='/evaluacion')
-    app.register_blueprint(imp_bp, url_prefix='/imparte')
-    app.register_blueprint(inst_bp, url_prefix='/instructor')
-    app.register_blueprint(mat_bp, url_prefix='/matricula')
-    app.register_blueprint(mat_eva_bp, url_prefix='/mat_eva')
-    app.register_blueprint(per_bp, url_prefix='/persona')
+    app.register_blueprint(apr_bp, url_prefix='/aprendices')
+    app.register_blueprint(cur_bp, url_prefix='/cursos')
+    app.register_blueprint(eva_bp, url_prefix='/evaluaciones')
+    app.register_blueprint(imp_bp, url_prefix='/impartes')
+    app.register_blueprint(inst_bp, url_prefix='/instructores')
+    app.register_blueprint(mat_bp, url_prefix='/matriculas')
+    app.register_blueprint(mat_eva_bp, url_prefix='/mat_evas')
+    app.register_blueprint(per_bp, url_prefix='/personas')
