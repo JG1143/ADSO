@@ -5,7 +5,7 @@ class imparteController:
 
     def show():
         data = imparteService.show()
-
+        
 
 
         # cyflz16
