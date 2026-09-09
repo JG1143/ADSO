@@ -10,4 +10,12 @@ def home():
 
 @eva_bp.route('/', methods=['POST'])
 def add():
-    return "agregar evaluacion"
+    evaluacionController.add()
+
+@eva_bp.route('/<uuid>', methods=['DELETE'])
+def delete():
+    evaluacionController.delete()
+
+@eva_bp.route('/', methods=['POST'])
+def update():
+    evaluacionController.update()

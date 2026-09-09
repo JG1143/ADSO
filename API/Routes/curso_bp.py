@@ -10,4 +10,12 @@ def home():
 
 @cur_bp.route('/', methods=['POST'])
 def add():
-    return "agregar curso"
+    cursoController.add()
+
+@cur_bp.route('/<uuid>', methods=['DELETE'])
+def delete():
+    cursoController.delete()
+
+@cur_bp.route('/', methods=['POST'])
+def update():
+    cursoController.update()

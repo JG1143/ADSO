@@ -10,4 +10,12 @@ def home():
 
 @apr_bp.route('/', methods=['POST'])
 def add():
-    return "agregar aprendiz"
+    aprendizController.add()
+
+@apr_bp.route('/<uuid>', methods=['DELETE'])
+def delete():
+    aprendizController.delete()
+
+@apr_bp.route('/', methods=['POST'])
+def update():
+    aprendizController.update()

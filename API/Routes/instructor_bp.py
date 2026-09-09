@@ -10,4 +10,12 @@ def home():
 
 @inst_bp.route('/', methods=['POST'])
 def add():
-    return "agregar instructor"
+    InstructorController.add()
+
+@inst_bp.route('/<uuid>', methods=['DELETE'])
+def delete():
+    InstructorController.delete()
+
+@inst_bp.route('/', methods=['POST'])
+def update():
+    InstructorController.update()
