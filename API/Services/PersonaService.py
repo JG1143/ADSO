@@ -19,5 +19,15 @@ class PersonaService:
         c.execute(sql)
         data = c.fetchall()
         print(data)
-        # c.close()
         return ""
+        
+    def obtener_id(id):
+        sql = "SELECT * FROM T_PERSONA WHERE PER_ID = %s"
+        c  = current_app.mysql.connection.cursor()
+        c.execute(sql,(id,))
+        data = c.fetchone()
+        if data is None:
+            return "No se encontro la persona "
+        id_per = Persona(data[0])
+        c.close()
+        return id_per
