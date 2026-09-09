@@ -10,4 +10,16 @@ def home():
 
 @per_bp.route('/', methods=['POST'])
 def add():
-    return "agregar Persona"
+    PersonaController.add()
+
+@per_bp.route('/<uuid>', methods=['DELETE'])
+def delete():
+    PersonaController.delete()
+
+@per_bp.route('/', methods=['POST'])
+def update():
+    PersonaController.update()
+
+@per_bp.route('/<int:id>', methods=['get'])
+def obtener_id():
+    PersonaController.obtener_id()

@@ -10,4 +10,12 @@ def home():
 
 @mat_bp.route('/', methods=['POST'])
 def add():
-    return "agregar matricula"
+    matriculaController.add()
+
+@mat_bp.route('/<uuid>', methods=['DELETE'])
+def delete():
+    matriculaController.delete()
+
+@mat_bp.route('/', methods=['POST'])
+def update():
+    matriculaController.update()
