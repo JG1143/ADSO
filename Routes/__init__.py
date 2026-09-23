@@ -6,6 +6,7 @@ from .instructor_bp import inst_bp
 from .matricula_bp import mat_bp
 from .mat_eva_bp import mateva_bp
 from .persona_bp import per_bp
+from .documentacion import documentacion_bp
 
 
 def loadRouters(app):
@@ -17,3 +18,4 @@ def loadRouters(app):
     app.register_blueprint(mat_bp, url_prefix='/matriculas')
     app.register_blueprint(mateva_bp, url_prefix='/mat_evas')
     app.register_blueprint(per_bp, url_prefix='/personas')
+    app.register_blueprint(documentacion_bp,url_prefix='/documentacion')

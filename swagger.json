@@ -1,0 +1,256 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API De Institucion",
+    "description": "API REST para gestión de usuarios y eventos.",
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:5000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Aprendiz",
+      "description": "Gestión de aprendices"
+    },
+  
+    {
+      "name": "Curso",
+      "description": "Gestión de Cursos"
+    },
+
+    {
+      "name": "Personas",
+      "description": "Gestión de personas"
+    },
+
+    {
+      "name": "Instructor",
+      "description": "Gestión de Instructores"
+    },
+        {
+      "name": "Matricula",
+      "description": "Gestión de Matriculas"
+    },
+    {
+      "name": "Evaluacion",
+      "description": "Gestión de evaluaciones"
+    },
+        {
+      "name": "Imparte",
+      "description": "Gestión de asignacion de cursos los instructores"
+    },
+    {
+      "name": "Mat_eva",
+      "description": "Gestion de resultados de evaluacion de matricula"
+    }
+  ],
+  "paths": {
+    
+    "/aprendiz": {
+      "get": {
+        "tags": ["Aprendiz"],
+        "summary": "Listar aprendices",
+        "responses": {
+          "200": {
+            "description": "Lista de aprendices"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Aprendiz"],
+        "summary": "Crear aprendiz",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": { "type": "string" },
+                  "genero": { "type": "string" },
+                  "frm": { "type": "string" },
+                  "numdoc": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Aprendiz creado"
+          }
+        }
+      }
+    },
+
+    "/usuarios/{id}": {
+      "get": {
+        "tags": ["Aprendiz"],
+        "summary": "Obtener aprendiz por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "aprendiz encontrado"
+          },
+          "404": {
+            "description": "Aprendiz no encontrado"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Aprendiz"],
+        "summary": "Actualizar Aprendiz",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": { "type": "string" },
+                  "genero": { "type": "string" },
+                  "frm": { "type": "string" },
+                  "numdoc": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Aprendiz actualizado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Aprendiz"],
+        "summary": "Eliminar Aprendiz",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Aprendiz eliminado"
+          }
+        }
+      }
+    },
+
+    "/eventos": {
+      "get": {
+        "tags": ["Eventos"],
+        "summary": "Listar eventos",
+        "responses": {
+          "200": {
+            "description": "Lista de eventos"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Eventos"],
+        "summary": "Crear evento",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": { "type": "string" },
+                  "fecha": { "type": "string", "format": "date" },
+                  "lugar": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Evento creado"
+          }
+        }
+      }
+    },
+
+    "/eventos/{id}": {
+      "get": {
+        "tags": ["Eventos"],
+        "summary": "Obtener evento por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Evento encontrado"
+          },
+          "404": {
+            "description": "Evento no encontrado"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Eventos"],
+        "summary": "Actualizar evento",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Evento actualizado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Eventos"],
+        "summary": "Eliminar evento",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Evento eliminado"
+          }
+        }
+      }
+    }
+
+  }
+}
