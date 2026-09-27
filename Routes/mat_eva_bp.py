@@ -6,16 +6,16 @@ mateva_bp = Blueprint('mateva_bp', __name__)
 
 @mateva_bp.route('/', methods=['GET'])
 def home():
-    mat_eva_Controller.show()
+    mat_evaController.show()
 
 @mateva_bp.route('/', methods=['POST'])
 def add():
-    mat_eva_Controller.add()
+    mat_evaController.add()
 
 @mateva_bp.route('/<uuid>', methods=['DELETE'])
 def delete():
-    mat_eva_Controller.delete()
+    mat_evaController.delete()
 
 @mateva_bp.route('/<uuid>', methods=['PATCH'])
 def update():
-    mat_eva_Controller.update()
+    mat_evaController.update()
