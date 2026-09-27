@@ -13,7 +13,7 @@ def loadRouters(app):
     app.register_blueprint(apr_bp, url_prefix='/aprendices')
     app.register_blueprint(cur_bp, url_prefix='/cursos')
     app.register_blueprint(eva_bp, url_prefix='/evaluaciones')
-    app.register_blueprint(imp_bp, url_prefix='/impartes')
+    app.register_blueprint(imp_bp, url_prefix='/imparte')
     app.register_blueprint(inst_bp, url_prefix='/instructores')
     app.register_blueprint(mat_bp, url_prefix='/matriculas')
     app.register_blueprint(mateva_bp, url_prefix='/mat_evas')
