@@ -13,13 +13,13 @@ def add():
     return PersonaController.add()
 
 @per_bp.route('/<uuid>', methods=['DELETE'])
-def delete():
-    return PersonaController.delete()
+def delete(uuid):
+    return PersonaController.delete(uuid)
 
 @per_bp.route('/<uuid>', methods=['PATCH'])
-def update():
-    return  PersonaController.update()
+def update(uuid):
+    return PersonaController.update(uuid)
 
 @per_bp.route('/<int:id>', methods=['GET'])
-def obtener_id():
-    return PersonaController.obtener_id()
+def obtener_id(id):
+    return PersonaController.obtener_id(id)

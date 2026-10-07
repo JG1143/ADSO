@@ -13,9 +13,9 @@ def add():
     return InstructorController.add()
 
 @inst_bp.route('/<uuid>', methods=['DELETE'])
-def delete():
-    return InstructorController.delete()
+def delete(uuid):
+    return InstructorController.delete(uuid)
 
 @inst_bp.route('/<uuid>', methods=['PATCH'])
-def update():
-    return InstructorController.update()
+def update(uuid):
+    return InstructorController.update(uuid)

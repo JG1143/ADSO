@@ -13,9 +13,9 @@ def add():
     return evaluacionController.add()
 
 @eva_bp.route('/<uuid>', methods=['DELETE'])
-def delete():
-    return evaluacionController.delete()
+def delete(uuid):
+    return evaluacionController.delete(uuid)
 
 @eva_bp.route('/<uuid>', methods=['PATCH'])
-def update():
-    return evaluacionController.update()
+def update(uuid):
+    return evaluacionController.update(uuid)

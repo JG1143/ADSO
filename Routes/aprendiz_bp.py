@@ -14,9 +14,9 @@ def add():
      return aprendizController.add()
 
 @apr_bp.route('/<uuid>', methods=['DELETE'])
-def delete():
-    return aprendizController.delete()
+def delete(uuid):
+    return aprendizController.delete(uuid)
 
 @apr_bp.route('/<uuid>', methods=['PATCH'])
-def update():
-    return aprendizController.update()
+def update(uuid):
+    return aprendizController.update(uuid)

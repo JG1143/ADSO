@@ -13,9 +13,9 @@ def add():
     return mat_evaController.add()
 
 @mateva_bp.route('/<uuid>', methods=['DELETE'])
-def delete():
-    return mat_evaController.delete()
+def delete(uuid):
+    return mat_evaController.delete(uuid)
 
 @mateva_bp.route('/<uuid>', methods=['PATCH'])
-def update():
-    return mat_evaController.update()
+def update(uuid):
+    return mat_evaController.update(uuid)

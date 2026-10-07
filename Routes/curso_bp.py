@@ -13,9 +13,9 @@ def add():
     return cursoController.add()
 
 @cur_bp.route('/<uuid>', methods=['DELETE'])
-def delete():
-    return cursoController.delete()
+def delete(uuid):
+    return cursoController.delete(uuid)
 
 @cur_bp.route('/<uuid>', methods=['PATCH'])
-def update():
-    return cursoController.update()
+def update(uuid):
+    return cursoController.update(uuid)
