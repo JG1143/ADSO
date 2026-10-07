@@ -6,7 +6,7 @@ class MatEva:
         self.__mate_eva_id = mate_eva_id
         self.__mate_mat_id = mate_mat_id
     
-    def to_dict__(self):
+    def to_dict(self):
         return {
             'mate_id': self.__mate_id,
             'mate_uuid': self.__mate_uuid,

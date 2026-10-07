@@ -7,7 +7,7 @@ class Matricula:
         self.__mat_apr_id = mat_apr_id
         self.__mat_cur_id = mat_cur_id
     
-    def to_dict__(self):
+    def to_dict(self):
         return {
             'mat_id':       self.__mat_id,
             'mat_uuid':     self.__mat_uuid,

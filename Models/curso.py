@@ -8,7 +8,7 @@ class Curso:
         self.__cur_costo = cur_costo
         self.__cur_descripcion = cur_descripcion
 
-    def to_dict__(self):
+    def to_dict(self):
         return {
             'cur_id': self.__cur_id,
             'cur_uuid': self.__cur_uuid,

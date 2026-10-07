@@ -7,7 +7,7 @@ class Imparte:
         self.__imp_cur_id = imp_cur_id
         self.__imp_ins_id = imp_ins_id  
 
-    def to_dict__(self):
+    def to_dict(self):
         return {
             'imp_id': self.__imp_id,
             'imp_uuid': self.__imp_uuid,

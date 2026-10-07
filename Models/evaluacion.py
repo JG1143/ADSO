@@ -7,7 +7,7 @@ class Evaluacion:
         self.__eva_porcentaje = eva_porcentaje
         self.__eva_fecha = eva_fecha  
 
-    def to_dict__(self):
+    def to_dict(self):
         return {
             'eva_id': self.__eva_id,
             'eva_uuid': self.__eva_uuid,
