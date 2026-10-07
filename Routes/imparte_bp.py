@@ -5,17 +5,17 @@ from Controllers.imparteController import imparteController
 imp_bp = Blueprint('imp_bp', __name__)
 
 @imp_bp.route('/', methods=['GET'])
-def home():
-    imparteController.show()
+def show():
+    return imparteController.show()
 
 @imp_bp.route('/', methods=['POST'])
 def add():
-    imparteController.add()
+    return imparteController.add()
 
 @imp_bp.route('/<uuid>', methods=['DELETE'])
 def delete():
-    imparteController.delete()
+    return imparteController.delete()
 
 @imp_bp.route('/<uuid>', methods=['PATCH'])
 def update():
-    imparteController.update()
+    return imparteController.update()

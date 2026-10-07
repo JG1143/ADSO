@@ -5,17 +5,17 @@ from Controllers.evaluacionController import evaluacionController
 eva_bp = Blueprint('eva_bp', __name__)
 
 @eva_bp.route('/', methods=['GET'])
-def home():
-    evaluacionController.show()
+def show():
+    return evaluacionController.show()
 
 @eva_bp.route('/', methods=['POST'])
 def add():
-    evaluacionController.add()
+    return evaluacionController.add()
 
 @eva_bp.route('/<uuid>', methods=['DELETE'])
 def delete():
-    evaluacionController.delete()
+    return evaluacionController.delete()
 
 @eva_bp.route('/<uuid>', methods=['PATCH'])
 def update():
-    evaluacionController.update()
+    return evaluacionController.update()

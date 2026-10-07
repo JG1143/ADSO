@@ -8,6 +8,6 @@ from Routes import loadRouters
 app = Flask(__name__)
 app.config.from_object(Config) 
 mysql = MySQL(app)
-
+app.mysql = mysql
 loadRouters(app)
 app.run(debug=True, port=5000, host="0.0.0.0")

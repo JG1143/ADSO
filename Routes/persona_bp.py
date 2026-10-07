@@ -5,21 +5,21 @@ from Controllers.PersonaController import PersonaController
 per_bp = Blueprint('per_bp', __name__)
 
 @per_bp.route('/', methods=['GET'])
-def home():
-    PersonaController.show()
+def show():
+    return PersonaController.show()
 
 @per_bp.route('/', methods=['POST'])
 def add():
-    PersonaController.add()
+    return PersonaController.add()
 
 @per_bp.route('/<uuid>', methods=['DELETE'])
 def delete():
-    PersonaController.delete()
+    return PersonaController.delete()
 
 @per_bp.route('/<uuid>', methods=['PATCH'])
 def update():
-    PersonaController.update()
+    return  PersonaController.update()
 
 @per_bp.route('/<int:id>', methods=['GET'])
 def obtener_id():
-    PersonaController.obtener_id()
+    return PersonaController.obtener_id()
