@@ -10,7 +10,7 @@ class aprendizController:
         data = aprendizService.show()
         return jsonify(data), 200
 
-    def add(data):
+    def add():
         data = request.get_json(silent=True)
         if data is None :
             return jsonify({"mensaje": "json invalido"}), 400
@@ -20,11 +20,11 @@ class aprendizController:
         if len(faltantes) > 0 :
             return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
-        if  data.get("per_id") is int:
+        if not isinstance(data.get("per_id"), int):
             return jsonify({"mensaje": "el id de la persona debe ser un entero"}), 400  
 
-        if data.get("fecha_nac") is not "yyyy/mm/dd":
-            return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy/mm/dd"}), 400
+        if not isinstance(data.get("fecha_nac"), str) or not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha_nac")):
+            return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}), 400
         
         if personaService.get_by_id(data["per_id"]) == "No se encontro la persona ":
             return jsonify({"mensaje": "la persona no existe"}), 400

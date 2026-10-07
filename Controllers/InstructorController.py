@@ -9,7 +9,7 @@ class InstructorController:
         data = instructorService.show()
         return jsonify(data), 200
 
-    def add(data):
+    def add():
                 data = request.get_json(silent=True)
                 if data is None :
                     return jsonify({"mensaje": "json invalido"}), 400
@@ -24,7 +24,7 @@ class InstructorController:
                     return jsonify({"mensaje":"la especialidad debe ser cadena de texto"}), 400
                 
 
-                if  data.get("per_id") is int:
+                if not isinstance(data.get("per_id"), int):
                     return jsonify({"mensaje": "el id de la persona debe ser un entero"}), 400
 
                 if personaService.get_by_id(data["per_id"]) == "No se encontro la persona ":

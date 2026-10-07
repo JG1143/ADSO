@@ -8,7 +8,7 @@ class PersonaController:
         data = personaService.show()
         return jsonify(data), 200
 
-    def add(data):
+    def add():
                 data = request.get_json(silent=True)
                 if data is None :
                     return jsonify({"mensaje": "json invalido"}), 400
@@ -30,10 +30,10 @@ class PersonaController:
                 if  data.get("pri_apellido") is str:
                     return jsonify({"mensaje": "el primer apellido debe ser cadena de texto"}), 400 
                   
-                if  data.get("seg_apellido") is int:
+                if not isinstance(data.get("seg_apellido"), str):
                     return jsonify({"mensaje": "el segundo apellido debe ser cadena de texto"}), 400
 
-                if  data.get("docuemnto") is int:
+                if not isinstance(data.get("documento"), int):
                     return jsonify({"mensaje": "el docuemnto debe ser numero entero"}), 400
 
 

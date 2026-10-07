@@ -8,7 +8,7 @@ class matriculaController:
         data = matriculaService.show()
         return jsonify(data), 200
 
-    def add(data):
+    def add():
                 data = request.get_json(silent=True)
                 if data is None :
                     return jsonify({"mensaje": "json invalido"}), 400
@@ -28,11 +28,11 @@ class matriculaController:
                             return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
 
 
-                if  data.get("apr_id") is int:
+                if not isinstance(data.get("apr_id"), int):
                     return jsonify({"mensaje": "el apr_id debe ser numero entero"}), 400
 
 
-                if  data.get("cur_id") is int:
+                if not isinstance(data.get("cur_id"), int):
                     return jsonify({"mensaje": "el cur_id debe ser numero entero"}), 400
 
 

@@ -8,7 +8,7 @@ class evaluacionController:
         data = evaluacionService.show()
         return jsonify(data), 200
 
-    def add(data):
+    def add():
             data = request.get_json(silent=True)
             if data is None :
                 return jsonify({"mensaje": "json invalido"}), 400
@@ -21,10 +21,10 @@ class evaluacionController:
             if data.get("nombre") is not str:
                 return jsonify ({"mensaje": "el nombre es una cadena de texto"}),  400
 
-            if data.get("codigo") is not int:
+            if not isinstance(data.get("codigo"), int):
                 return jsonify ({"mensaje":"el codigo debe ser un  numero entero"}),400
 
-            if data.get("porcentaje") is not int:
+            if not isinstance(data.get("porcentaje"), int):
                 return jsonify ({"mensaje": "el porcentaje debe ser un numero entero"}), 400
 
             if data.get("fecha") is not "yyyy/mm/dd":
@@ -42,7 +42,7 @@ class evaluacionController:
     def delete(uuid):
         x = evaluacionService.delete(uuid)
         if x == 200:
-             jsonify ({"mensaje": f"se elimino la evaluacion con uuid:{uuid}"}),200
+             return jsonify ({"mensaje": f"se elimino la evaluacion con uuid:{uuid}"}),200
         else:
             return jsonify({"mensaje": f"no se encontro la evaluacion con el uuid{uuid}"}),404
 

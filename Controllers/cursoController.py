@@ -10,7 +10,7 @@ class cursoController:
         return jsonify(data), 200
 
 
-    def add(data):
+    def add():
             data = request.get_json(silent=True)
             if data is None :
                 return jsonify({"mensaje": "json invalido"}), 400
@@ -23,15 +23,15 @@ class cursoController:
             if data.get("nombre") is not str:
                 return jsonify ({"mensaje": "el nombre debe ser una cadena de texto"}), 400
 
-            if data.get("codigo") is not int:
+            if not isinstance(data.get("codigo"), int):
                 return jsonify({"mensaje": "el codigo del curso debe ser un numero entero "}), 400
 
             
-            if data.get("duracion") is not int:
+            if not isinstance(data.get("duracion"), int):
                 return jsonify({"mensaje": "la duracion  debe ser un numero entero "}), 400
 
 
-            if data.get("costo") is not int:
+            if not isinstance(data.get("costo"), int):
                 return jsonify({"mensaje": "el costo debe ser un numero entero"}), 400
 
             

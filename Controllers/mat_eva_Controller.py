@@ -8,8 +8,9 @@ class mat_evaController:
         data = mat_evaService.show()
         return jsonify(data), 200
 
-    def add(data):
+    def add():
                 data = request.get_json(silent=True)
+                print(data)
                 if data is None :
                     return jsonify({"mensaje": "json invalido"}), 400
                 campo_req = ("nota","eva_id","mat_id")
@@ -18,15 +19,15 @@ class mat_evaController:
                 if len(faltantes) > 0 :
                     return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
+                print(type(data.get("nota")))
+                if not isinstance(data.get("nota"), float):
+                    return jsonify({"mensaje":"la nota debe ser numero decimal"}), 400
 
-                if data.get("nota") is not int:
-                    return jsonify({"mensaje":"la nota debe ser numero entero"}), 200
 
+                if not isinstance(data.get("eva_id"), int):
+                    return jsonify({"mensaje":"la eva_id debe ser numero entero"}), 400
 
-                if data.get("eva_id") is not int:
-                    return jsonify({"mensaje":"la eva_id debe ser numero entero"}),200
-
-                if data.get("mat_id") is not int:
+                if not isinstance(data.get("mat_id"), int):
                     return jsonify({"mensaje":"la mat_id debe ser numero entero"}), 400
 
 
@@ -38,9 +39,9 @@ class mat_evaController:
     def delete(uuid):
         x = mat_evaService.delete(uuid)
         if x == 200:
-            jsonify ({"mensaje": f"se elimino mat_eva con el uuid:{uuid}"}),200
+             return jsonify ({"mensaje": f"se elimino mat_eva con el uuid:{uuid}"}),200
         else:
-            return jsonify({"mensaje": f"no se encontro el mat_eva con el uuid{uuid}"}),404
+             return jsonify({"mensaje": f"no se encontro el mat_eva con el uuid{uuid}"}),404
 
 
         

@@ -8,7 +8,7 @@ class imparteController:
         data = imparteService.show()
         return jsonify(data), 200
 
-    def add(data):
+    def add():
             data = request.get_json(silent=True)
             if data is None :
                 return jsonify({"mensaje": "json invalido"}), 400
@@ -27,11 +27,11 @@ class imparteController:
             elif  data.get("fecha_asignacion") is not str :
                             return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
 
-            if data.get("cur_id") is not int: 
+            if not isinstance(data.get("cur_id"), int):
                    return jsonify({"mensaje":"el cur_id debe se numero entero"}),400
 
 
-            if data.get("ins_id") is not int:
+            if not isinstance(data.get("ins_id"), int):
                 return jsonify({"mensaje": "la ins_id debe ser un numero entero"}), 400
 
 
@@ -44,7 +44,7 @@ class imparteController:
     def delete(uuid):
         x = imparteService.delete(uuid)
         if x == 200:
-             jsonify ({"mensaje": f"se elimino imparte con el uuid:{uuid}"}),200
+             return jsonify ({"mensaje": f"se elimino imparte con el uuid:{uuid}"}),200
         else:
             return jsonify({"mensaje": f"no se encontro el imparte con el uuid{uuid}"}),404
 
