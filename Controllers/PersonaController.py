@@ -21,13 +21,13 @@ class PersonaController:
 
 
 
-                if  data.get("pri_nombre") is str:
+                if not isinstance(data.get("pri_nombre"), str):
                     return jsonify({"mensaje": "el primer nombre debe ser cadena de texto"}), 400  
                  
-                if  data.get("seg_nombre") is str:
+                if not isinstance(data.get("seg_nombre"), str):
                     return jsonify({"mensaje": "el segundo nombre debe ser cadena de texto"}), 400  
                  
-                if  data.get("pri_apellido") is str:
+                if not isinstance(data.get("pri_apellido"), str):
                     return jsonify({"mensaje": "el primer apellido debe ser cadena de texto"}), 400 
                   
                 if not isinstance(data.get("seg_apellido"), str):

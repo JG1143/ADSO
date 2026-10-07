@@ -20,7 +20,7 @@ class InstructorController:
                     return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
 
-                if data.get("especialidad") is not str:
+                if not isinstance(data.get("especialidad"), str):
                     return jsonify({"mensaje":"la especialidad debe ser cadena de texto"}), 400
                 
 

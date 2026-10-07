@@ -1,5 +1,6 @@
 from flask import jsonify, request
 from Services.imparteService import imparteService
+import re
 
 
 class imparteController:
@@ -19,16 +20,17 @@ class imparteController:
                 return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
 
-            if data.get("rol") is not str:
+            if not isinstance(data.get("rol"),str):
                 return jsonify ({"mensaje": "el rol debe ser cadena de texto"}),400
 
-            if data.get("fecha_asignacion") is not "yyyy/mm/dd":
-                            return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
-            elif  data.get("fecha_asignacion") is not str :
-                            return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
+            if not isinstance(data.get("fecha_asignacion"), str) or not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get       ("fecha_asignacion")):
+                return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}),400
+            
+            elif  not isinstance(data.get("fecha_asignacion"), str):
+                return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
 
             if not isinstance(data.get("cur_id"), int):
-                   return jsonify({"mensaje":"el cur_id debe se numero entero"}),400
+                return jsonify({"mensaje":"el cur_id debe se numero entero"}),400
 
 
             if not isinstance(data.get("ins_id"), int):

@@ -1,5 +1,6 @@
 from flask import jsonify,request
 from Services.matriculaService import matriculaService
+import re
 
 
 class matriculaController:
@@ -18,13 +19,13 @@ class matriculaController:
                 if len(faltantes) > 0 :
                     return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
-                if  data.get("estado") is str:
+                if not isinstance(data.get("estado"), str):
                     return jsonify({"mensaje": "el estado debe ser cadena de texto"}), 400
 
 
-                if data.get("fecha_inscripcion") is not "yyyy/mm/dd":
-                            return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
-                elif  data.get("fecha_inscripcion") is not str :
+                if not isinstance(data.get("fecha_inscripcion"), str) or not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha_inscripcion")):
+                            return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}),400
+                elif  not isinstance(data.get("fecha_inscripcion"), str):
                             return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
 
 

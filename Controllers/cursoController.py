@@ -20,7 +20,7 @@ class cursoController:
             if len(faltantes) > 0 :
                 return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
-            if data.get("nombre") is not str:
+            if not isinstance(data.get("nombre"), str):
                 return jsonify ({"mensaje": "el nombre debe ser una cadena de texto"}), 400
 
             if not isinstance(data.get("codigo"), int):
@@ -31,11 +31,11 @@ class cursoController:
                 return jsonify({"mensaje": "la duracion  debe ser un numero entero "}), 400
 
 
-            if not isinstance(data.get("costo"), int):
-                return jsonify({"mensaje": "el costo debe ser un numero entero"}), 400
+            if not isinstance(data.get("costo"), float):
+                return jsonify({"mensaje": "el costo debe ser un numero decimal"}), 400
 
             
-            if data.get("descripcion") is not str:
+            if not isinstance(data.get("descripcion"), str):
                 return jsonify({"mensaje": "la descripcion debe ser una cadena de texto"}), 400
             
              

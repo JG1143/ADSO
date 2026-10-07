@@ -18,7 +18,7 @@ class evaluacionController:
             if len(faltantes) > 0 :
                 return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
-            if data.get("nombre") is not str:
+            if not isinstance(data.get("nombre"), str):
                 return jsonify ({"mensaje": "el nombre es una cadena de texto"}),  400
 
             if not isinstance(data.get("codigo"), int):
@@ -27,11 +27,8 @@ class evaluacionController:
             if not isinstance(data.get("porcentaje"), int):
                 return jsonify ({"mensaje": "el porcentaje debe ser un numero entero"}), 400
 
-            if data.get("fecha") is not "yyyy/mm/dd":
-                return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
-            elif  data.get("fecha") is not str :
-                return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
-
+            if not isinstance(data.get("fecha"), str) or not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha")):
+                return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}), 400
 
 
             x = evaluacionService.add(data)
