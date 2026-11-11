@@ -21,12 +21,11 @@ class cursoController:
             if len(faltantes) > 0 :
                 return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
-
            try:
                if type(data.get("nombre")) != str:
                    raise TypeError
            except TypeError:
-               return jsonify({"mensaje":"La nombre debe enviarse como cadena de texto"}), 400
+               return jsonify({"mensaje":"El nombre debe enviarse como cadena de texto"}), 400
                 
             try:
                 if type(data.get("codigo")) != int:
@@ -45,16 +44,16 @@ class cursoController:
 
 
             try: 
-                if type(data.get("costo")) != float:
+                if type(data.get("costo")) Not in (int,float) :
                     raise TypeError
             except TypeError:
                 return jsonify({"mensaje": " El costo debe enviarse como un numero decimal "}), 400
         
            try:
-               if type(data.get("duracion")) != str:
+               if type(data.get("descripcion")) != str:
                    raise TypeError
            except TypeError:
-               return jsonify({"mensaje":"La duracion debe enviarse como cadena de texto"}), 400
+               return jsonify({"mensaje":"La descripcion debe enviarse como cadena de texto"}), 400
             
              
             x = cursoService.add(data)
@@ -73,7 +72,10 @@ class cursoController:
 
 
     def update(uuid):
-        data = request.get_json()
+        data = request.get_json(silent=true)
+        if not isinstance(data,dict):
+            return jsonify({"mensaje": "JSON invalido"}), 400
+
         campos_req = ['nombre', 'codigo', 'duracion', 'costo', 'descripcion']
         faltantes = [w for w in campos_req if w not in data]
         
