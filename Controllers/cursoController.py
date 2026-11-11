@@ -17,26 +17,44 @@ class cursoController:
             campo_req = ("nombre","codigo","duracion","costo","descripcion")
             faltantes = [W for W in campo_req if W not in data]
 
+            
             if len(faltantes) > 0 :
                 return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
-            if not isinstance(data.get("nombre"), str):
-                return jsonify ({"mensaje": "el nombre debe ser una cadena de texto"}), 400
 
-            if not isinstance(data.get("codigo"), int):
-                return jsonify({"mensaje": "el codigo del curso debe ser un numero entero "}), 400
-
+           try:
+               if type(data.get("nombre")) != str:
+                   raise TypeError
+           except TypeError:
+               return jsonify({"mensaje":"La nombre debe enviarse como cadena de texto"}), 400
+                
+            try:
+                if type(data.get("codigo")) != int:
+                    raise TypeError
             
-            if not isinstance(data.get("duracion"), int):
-                return jsonify({"mensaje": "la duracion  debe ser un numero entero "}), 400
+            except TypeError:
+                return jsonify({
+                    "mensaje": "El código debe enviarse como un número entero"
+                }), 400
+
+            try:
+                if type(data.get("duracion")) != int:
+                    raise TypeError
+            except TypeError:
+                return jsonify({ "mensaje" : " La duracion debe enviarse como un numero entero"}), 400
 
 
-            if not isinstance(data.get("costo"), float):
-                return jsonify({"mensaje": "el costo debe ser un numero decimal"}), 400
-
-            
-            if not isinstance(data.get("descripcion"), str):
-                return jsonify({"mensaje": "la descripcion debe ser una cadena de texto"}), 400
+            try: 
+                if type(data.get("costo")) != float:
+                    raise TypeError
+            except TypeError:
+                return jsonify({"mensaje": " El costo debe enviarse como un numero decimal "}), 400
+        
+           try:
+               if type(data.get("duracion")) != str:
+                   raise TypeError
+           except TypeError:
+               return jsonify({"mensaje":"La duracion debe enviarse como cadena de texto"}), 400
             
              
             x = cursoService.add(data)
