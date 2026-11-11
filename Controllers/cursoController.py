@@ -71,7 +71,8 @@ class cursoController:
 
 
     def update(uuid):
-        data = request.get_json(silent=true)
+        data = request.get_json(silent=True)
+        
         if not isinstance(data,dict):
             return jsonify({"mensaje": "JSON invalido"}), 400
 
