@@ -16,6 +16,6 @@ def add():
 def delete(uuid):
     return imparteController.delete(uuid)
 
-@imp_bp.route('/<uuid>', methods=['PATCH'])
+@imp_bp.route('/<uuid>', methods=['PUT'])
 def update(uuid):
     return imparteController.update(uuid)

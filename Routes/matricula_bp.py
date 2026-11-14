@@ -16,6 +16,6 @@ def add():
 def delete(uuid):
     return matriculaController.delete(uuid)
 
-@mat_bp.route('/<uuid>', methods=['PATCH'])
+@mat_bp.route('/<uuid>', methods=['PUT'])
 def update(uuid):
     return matriculaController.update(uuid)

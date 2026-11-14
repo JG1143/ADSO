@@ -16,7 +16,7 @@ def add():
 def delete(uuid):
     return PersonaController.delete(uuid)
 
-@per_bp.route('/<uuid>', methods=['PATCH'])
+@per_bp.route('/<uuid>', methods=['PUT'])
 def update(uuid):
     return PersonaController.update(uuid)
 

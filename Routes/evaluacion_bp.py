@@ -16,6 +16,6 @@ def add():
 def delete(uuid):
     return evaluacionController.delete(uuid)
 
-@eva_bp.route('/<uuid>', methods=['PATCH'])
+@eva_bp.route('/<uuid>', methods=['PUT'])
 def update(uuid):
     return evaluacionController.update(uuid)

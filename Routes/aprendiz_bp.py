@@ -17,6 +17,6 @@ def add():
 def delete(uuid):
     return aprendizController.delete(uuid)
 
-@apr_bp.route('/<uuid>', methods=['PATCH'])
+@apr_bp.route('/<uuid>', methods=['PUT'])
 def update(uuid):
     return aprendizController.update(uuid)
