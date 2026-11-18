@@ -1,21 +1,21 @@
 class Persona:
 
-    def __init__(self, PER_ID, PER_UUID, PER_PRI_NOMBRE, PER_SEG_NOMBRE, PER_PRI_APELLIDO, PER_SEG_APELLIDO,PER_DOCUMENTO):
-        self.__PER_ID           = PER_ID
-        self.__PER_UUID         = PER_UUID
-        self.__PER_PRI_NOMBRE   = PER_PRI_NOMBRE
-        self.__PER_SEG_NOMBRE   = PER_SEG_NOMBRE
-        self.__PER_PRI_APELLIDO = PER_PRI_APELLIDO
-        self.__PER_SEG_APELLIDO = PER_SEG_APELLIDO
-        self.__PER_DOCUMENTO    = PER_DOCUMENTO
+    def __init__(self, per_id, per_uuid, per_pri_nombre, per_seg_nombre, per_pri_apellido, per_seg_apellido, per_documento):
+        self.__per_id           = per_id
+        self.__per_uuid         = per_uuid
+        self.__per_pri_nombre   = per_pri_nombre
+        self.__per_seg_nombre   = per_seg_nombre
+        self.__per_pri_apellido = per_pri_apellido
+        self.__per_seg_apellido = per_seg_apellido
+        self.__per_documento    = per_documento
 
-    def to_dict(self):
+    def to_dict(self): 
         return {
-            "PER_ID": self.__PER_ID,
-            "PER_UUID": self.__PER_UUID,
-            "PER_PRI_NOMBRE": self.__PER_PRI_NOMBRE,
-            "PER_SEG_NOMBRE": self.__PER_SEG_NOMBRE,
-            "PER_PRI_APELLIDO": self.__PER_PRI_APELLIDO,
-            "PER_SEG_APELLIDO": self.__PER_SEG_APELLIDO,
-            "PER_DOCUMENTO": self.__PER_DOCUMENTO
+            "per_id": self.__per_id,
+            "per_uuid": self.__per_uuid,
+            "per_pri_nombre": self.__per_pri_nombre,
+            "per_seg_nombre": self.__per_seg_nombre,
+            "per_pri_apellido": self.__per_pri_apellido,
+            "per_seg_apellido": self.__per_seg_apellido,
+            "per_documento": self.__per_documento
         }

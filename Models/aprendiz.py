@@ -1,16 +1,16 @@
 class Aprendiz:
 
-    def __init__(self, APR_ID, APR_UUID, APR_FECHA_NAC, APR_PER_ID):
-        self.__APR_ID       = APR_ID
-        self.__APR_UUID     = APR_UUID
-        self.__APR_FECHA_NAC= APR_FECHA_NAC
-        self.__APR_PER_ID   = APR_PER_ID
+    def __init__(self, apr_id, apr_uuid, apr_fecha_nac, apr_per_id):
+        self.__apr_id        = apr_id
+        self.__apr_uuid      = apr_uuid
+        self.__apr_fecha_nac = apr_fecha_nac
+        self.__apr_per_id    = apr_per_id
 
     # la tupla se convierte en un obj y ese obj en dic
     def to_dict(self):
         return {
-            "APR_ID": self.__APR_ID,
-            "APR_UUID": self.__APR_UUID,
-            "APR_FECHA_NAC": self.__APR_FECHA_NAC,
-            "APR_PER_ID": self.__APR_PER_ID
+            "apr_id": self.__apr_id,
+            "apr_uuid": self.__apr_uuid,
+            "apr_fecha_nac": self.__apr_fecha_nac,
+            "apr_per_id": self.__apr_per_id
         }

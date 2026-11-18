@@ -1,16 +1,16 @@
 class Instructor:
 
-    def __init__(self, INS_ID, INS_UUID, INS_ESPECIALIDAD, INS_PER_ID):
-        self.__INS_ID           = INS_ID
-        self.__INS_UUID         = INS_UUID
-        self.__INS_ESPECIALIDAD = INS_ESPECIALIDAD
-        self.__INS_PER_ID       = INS_PER_ID
+    def __init__(self, ins_id, ins_uuid, ins_especialidad, ins_per_id):
+        self.__ins_id           = ins_id
+        self.__ins_uuid         = ins_uuid
+        self.__ins_especialidad = ins_especialidad
+        self.__ins_per_id       = ins_per_id
 
 
     def to_dict(self):
         return {
-            "INS_ID": self.__INS_ID,
-            "INS_UUID": self.__INS_UUID,
-            "INS_ESPECIALIDAD": self.__INS_ESPECIALIDAD,
-            "INS_PER_ID": self.__INS_PER_ID
+            "ins_id": self.__ins_id,
+            "ins_uuid": self.__ins_uuid,
+            "ins_especialidad": self.__ins_especialidad,
+            "ins_per_id": self.__ins_per_id
         }
