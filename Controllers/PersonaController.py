@@ -49,7 +49,7 @@ class PersonaController:
                     if type(data.get("documento")) != int:
                         raise TypeError
                 except TypeError:
-                    return jsonify({"mensaje": "el docuemnto debe ser numero entero"}), 400
+                    return jsonify({"mensaje": "el documento debe ser numero entero"}), 400
 
 
                 
