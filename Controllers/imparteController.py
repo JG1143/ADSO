@@ -20,20 +20,32 @@ class imparteController:
                 return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
 
-            if not isinstance(data.get("rol"),str):
+            try:
+                if type(data.get("rol")) != str:
+                    raise TypeError
+            except TypeError:
                 return jsonify ({"mensaje": "el rol debe ser cadena de texto"}),400
 
-            if not isinstance(data.get("fecha_asignacion"), str) or not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get       ("fecha_asignacion")):
+            try:
+                if type(data.get("fecha_asignacion")) != str:
+                    raise TypeError
+            except TypeError:
                 return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}),400
-            
-            elif  not isinstance(data.get("fecha_asignacion"), str):
-                return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
 
-            if not isinstance(data.get("cur_id"), int):
+            if not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha_asignacion")):
+                return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}),400
+
+            try:
+                if type(data.get("cur_id")) != int:
+                    raise TypeError
+            except TypeError:
                 return jsonify({"mensaje":"el cur_id debe se numero entero"}),400
 
 
-            if not isinstance(data.get("ins_id"), int):
+            try:
+                if type(data.get("ins_id")) != int:
+                    raise TypeError
+            except TypeError:
                 return jsonify({"mensaje": "la ins_id debe ser un numero entero"}), 400
 
 

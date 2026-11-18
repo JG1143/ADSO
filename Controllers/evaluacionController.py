@@ -19,16 +19,31 @@ class evaluacionController:
             if len(faltantes) > 0 :
                 return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
-            if not isinstance(data.get("nombre"), str):
+            try:
+                if type(data.get("nombre")) != str:
+                    raise TypeError
+            except TypeError:
                 return jsonify ({"mensaje": "el nombre es una cadena de texto"}),  400
 
-            if not isinstance(data.get("codigo"), int):
+            try:
+                if type(data.get("codigo")) != int:
+                    raise TypeError
+            except TypeError:
                 return jsonify ({"mensaje":"el codigo debe ser un  numero entero"}),400
 
-            if not isinstance(data.get("porcentaje"), int):
+            try:
+                if type(data.get("porcentaje")) != int:
+                    raise TypeError
+            except TypeError:
                 return jsonify ({"mensaje": "el porcentaje debe ser un numero entero"}), 400
 
-            if not isinstance(data.get("fecha"), str) or not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha")):
+            try:
+                if type(data.get("fecha")) != str:
+                    raise TypeError
+            except TypeError:
+                return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}), 400
+
+            if not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha")):
                 return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}), 400
 
 

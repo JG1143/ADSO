@@ -2,6 +2,7 @@
 from flask import jsonify,request
 from Services.aprendizService import aprendizService
 from Services.personaService import personaService
+import re
 
 
 class aprendizController:
@@ -20,10 +21,19 @@ class aprendizController:
         if len(faltantes) > 0 :
             return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
-        if not isinstance(data.get("per_id"), int):
-            return jsonify({"mensaje": "el id de la persona debe ser un entero"}), 400  
+        try:
+            if type(data.get("per_id")) != int:
+                raise TypeError
+        except TypeError:
+            return jsonify({"mensaje": "el id de la persona debe ser un entero"}), 400
 
-        if not isinstance(data.get("fecha_nac"), str) or not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha_nac")):
+        try:
+            if type(data.get("fecha_nac")) != str:
+                raise TypeError
+        except TypeError:
+            return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}), 400
+
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha_nac")):
             return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}), 400
         
         if personaService.get_by_id(data["per_id"]) == "No se encontro la persona ":

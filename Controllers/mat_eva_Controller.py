@@ -20,14 +20,23 @@ class mat_evaController:
                     return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
                 print(type(data.get("nota")))
-                if not isinstance(data.get("nota"), float):
+                try:
+                    if type(data.get("nota")) != float:
+                        raise TypeError
+                except TypeError:
                     return jsonify({"mensaje":"la nota debe ser numero decimal"}), 400
 
 
-                if not isinstance(data.get("eva_id"), int):
+                try:
+                    if type(data.get("eva_id")) != int:
+                        raise TypeError
+                except TypeError:
                     return jsonify({"mensaje":"la eva_id debe ser numero entero"}), 400
 
-                if not isinstance(data.get("mat_id"), int):
+                try:
+                    if type(data.get("mat_id")) != int:
+                        raise TypeError
+                except TypeError:
                     return jsonify({"mensaje":"la mat_id debe ser numero entero"}), 400
 
 

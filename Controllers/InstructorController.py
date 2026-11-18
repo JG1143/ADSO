@@ -20,11 +20,17 @@ class InstructorController:
                     return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
 
-                if not isinstance(data.get("especialidad"), str):
+                try:
+                    if type(data.get("especialidad")) != str:
+                        raise TypeError
+                except TypeError:
                     return jsonify({"mensaje":"la especialidad debe ser cadena de texto"}), 400
                 
 
-                if not isinstance(data.get("per_id"), int):
+                try:
+                    if type(data.get("per_id")) != int:
+                        raise TypeError
+                except TypeError:
                     return jsonify({"mensaje": "el id de la persona debe ser un entero"}), 400
 
                 if personaService.get_by_id(data["per_id"]) == "No se encontro la persona ":

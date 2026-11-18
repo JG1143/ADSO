@@ -21,19 +21,34 @@ class PersonaController:
 
 
 
-                if not isinstance(data.get("pri_nombre"), str):
-                    return jsonify({"mensaje": "el primer nombre debe ser cadena de texto"}), 400  
+                try:
+                    if type(data.get("pri_nombre")) != str:
+                        raise TypeError
+                except TypeError:
+                    return jsonify({"mensaje": "el primer nombre debe ser cadena de texto"}), 400
                  
-                if not isinstance(data.get("seg_nombre"), str):
-                    return jsonify({"mensaje": "el segundo nombre debe ser cadena de texto"}), 400  
+                try:
+                    if type(data.get("seg_nombre")) != str:
+                        raise TypeError
+                except TypeError:
+                    return jsonify({"mensaje": "el segundo nombre debe ser cadena de texto"}), 400
                  
-                if not isinstance(data.get("pri_apellido"), str):
-                    return jsonify({"mensaje": "el primer apellido debe ser cadena de texto"}), 400 
+                try:
+                    if type(data.get("pri_apellido")) != str:
+                        raise TypeError
+                except TypeError:
+                    return jsonify({"mensaje": "el primer apellido debe ser cadena de texto"}), 400
                   
-                if not isinstance(data.get("seg_apellido"), str):
+                try:
+                    if type(data.get("seg_apellido")) != str:
+                        raise TypeError
+                except TypeError:
                     return jsonify({"mensaje": "el segundo apellido debe ser cadena de texto"}), 400
 
-                if not isinstance(data.get("documento"), int):
+                try:
+                    if type(data.get("documento")) != int:
+                        raise TypeError
+                except TypeError:
                     return jsonify({"mensaje": "el docuemnto debe ser numero entero"}), 400
 
 

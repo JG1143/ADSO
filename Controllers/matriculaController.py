@@ -19,21 +19,34 @@ class matriculaController:
                 if len(faltantes) > 0 :
                     return jsonify({"mensaje":f"faltan parametros {faltantes}"}), 400
 
-                if not isinstance(data.get("estado"), str):
+                try:
+                    if type(data.get("estado")) != str:
+                        raise TypeError
+                except TypeError:
                     return jsonify({"mensaje": "el estado debe ser cadena de texto"}), 400
 
 
-                if not isinstance(data.get("fecha_inscripcion"), str) or not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha_inscripcion")):
-                            return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}),400
-                elif  not isinstance(data.get("fecha_inscripcion"), str):
-                            return jsonify({"mensaje": "el formato debe ser yyyy/mm/dd"}),400
+                try:
+                    if type(data.get("fecha_inscripcion")) != str:
+                        raise TypeError
+                except TypeError:
+                    return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}),400
+
+                if not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha_inscripcion")):
+                    return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}),400
 
 
-                if not isinstance(data.get("apr_id"), int):
+                try:
+                    if type(data.get("apr_id")) != int:
+                        raise TypeError
+                except TypeError:
                     return jsonify({"mensaje": "el apr_id debe ser numero entero"}), 400
 
 
-                if not isinstance(data.get("cur_id"), int):
+                try:
+                    if type(data.get("cur_id")) != int:
+                        raise TypeError
+                except TypeError:
                     return jsonify({"mensaje": "el cur_id debe ser numero entero"}), 400
 
 
