@@ -53,8 +53,8 @@ class matriculaController:
 
 
                 x = matriculaService.add(data)
-                return jsonify(x),201
-                                
+                return jsonify(x),200
+                            
                                 
                                 
     def delete(uuid):

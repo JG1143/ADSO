@@ -38,7 +38,7 @@ class InstructorController:
 
 
                 x = instructorService.add(data)
-                return jsonify(x), 201
+                return jsonify(x), 200
                 
     def delete(uuid):
         x = instructorService.delete(uuid)

@@ -48,7 +48,7 @@ class evaluacionController:
 
 
             x = evaluacionService.add(data)
-            return jsonify(x),201
+            return jsonify(x),200
 
 
 

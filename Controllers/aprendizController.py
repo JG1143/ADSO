@@ -40,7 +40,7 @@ class aprendizController:
             return jsonify({"mensaje": "la persona no existe"}), 400
 
         x = aprendizService.add(data)
-        return jsonify(x), 201
+        return jsonify(x), 200
 
     def delete(uuid):
         x = aprendizService.delete(uuid)
