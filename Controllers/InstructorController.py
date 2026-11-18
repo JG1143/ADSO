@@ -33,7 +33,7 @@ class InstructorController:
                 except TypeError:
                     return jsonify({"mensaje": "el id de la persona debe ser un entero"}), 400
 
-                if personaService.get_by_id(data["per_id"]) == "No se encontro la persona ":
+                if personaService.get_by_id(data["per_id"]) is None:
                             return jsonify({"mensaje": "la persona no existe"}), 400
 
 
@@ -59,9 +59,8 @@ class InstructorController:
         if len(faltantes) > 0:
             return jsonify({"faltan campos": faltantes}), 400
     
-        x = instructorService.get_by_id(data["per_id"])
-        if len(x) > 0:
-            return jsonify({"no existe la persona": x}), 400
+        if personaService.get_by_id(data["per_id"]) is None:
+            return jsonify({"mensaje": "la persona no existe"}), 400
     
         x = instructorService.update(uuid, data)
         if x == 200:

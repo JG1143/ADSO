@@ -3,6 +3,14 @@ from Models.persona import Persona
 import uuid
 
 class personaService:
+    def get_by_id(id):
+        c = current_app.mysql.connection.cursor()
+        try:
+            c.execute("SELECT PER_ID FROM T_PERSONA WHERE PER_ID = %s", (id,))
+            return c.fetchone()
+        finally:
+            c.close()
+
     def add(data):
         uuid_per = uuid.uuid4()
         c = current_app.mysql.connection.cursor()
@@ -47,14 +55,3 @@ class personaService:
         data = [Persona(x[0], x[1], x[2], x[3], x[4], x[5], x[6]).to_dict() for x in data]
         c.close()
         return data
-
-    def obtener_id(id):
-        sql = "SELECT * FROM T_PERSONA WHERE PER_ID = %s"
-        c  = current_app.mysql.connection.cursor()
-        c.execute(sql,(id,))
-        data = c.fetchone()
-        if data is None:
-            return "No se encontro la persona "
-        id_per = Persona(data[0])
-        c.close()
-        return id_per

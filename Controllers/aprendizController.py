@@ -36,7 +36,7 @@ class aprendizController:
         if not re.match(r"^\d{4}-\d{2}-\d{2}$", data.get("fecha_nac")):
             return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}), 400
         
-        if personaService.get_by_id(data["per_id"]) == "No se encontro la persona ":
+        if personaService.get_by_id(data["per_id"]) is None:
             return jsonify({"mensaje": "la persona no existe"}), 400
 
         x = aprendizService.add(data)
@@ -50,16 +50,18 @@ class aprendizController:
             return jsonify ({"mensaje": f"no se encontro el recurso uuid :{uuid}"}), 404
 
     def update(uuid):
-        data = request.get_json()
+        data = request.get_json(silent=True)
+        if data is None:
+            return jsonify({"mensaje": "json invalido"}), 400
+
         campos_req = ['fecha_nac','per_id']
         faltantes = [w for w in campos_req if w not in data]
 
         if len(faltantes) > 0:
             return jsonify({"faltan campos": faltantes}), 400
 
-        x = personaService.get_by_id(data["per_id"])
-        if x is None :
-            return jsonify({"no existe la persona": x}), 400
+        if personaService.get_by_id(data["per_id"]) is None:
+            return jsonify({"mensaje": "la persona no existe"}), 400
 
         x = aprendizService.update(uuid, data)
         if x == 200:
