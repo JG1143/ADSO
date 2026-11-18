@@ -37,8 +37,8 @@ class InstructorController:
                             return jsonify({"mensaje": "la persona no existe"}), 400
 
 
-                x = instructorService.add(data)
-                return jsonify(x), 200
+                instructorService.add(data)
+                return jsonify({"mensaje": "Instructor registrado correctamente"}), 201
                 
     def delete(uuid):
         x = instructorService.delete(uuid)

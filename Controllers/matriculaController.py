@@ -52,8 +52,8 @@ class matriculaController:
 
 
 
-                x = matriculaService.add(data)
-                return jsonify(x),200
+                matriculaService.add(data)
+                return jsonify({"mensaje": "Matrícula registrada correctamente"}), 201
                             
                                 
                                 

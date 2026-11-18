@@ -39,8 +39,8 @@ class aprendizController:
         if personaService.get_by_id(data["per_id"]) is None:
             return jsonify({"mensaje": "la persona no existe"}), 400
 
-        x = aprendizService.add(data)
-        return jsonify(x), 200
+        aprendizService.add(data)
+        return jsonify({"mensaje": "Aprendiz registrado correctamente"}), 201
 
     def delete(uuid):
         x = aprendizService.delete(uuid)

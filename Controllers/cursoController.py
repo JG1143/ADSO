@@ -55,8 +55,8 @@ class cursoController:
                return jsonify({"mensaje":"La descripcion debe enviarse como cadena de texto"}), 400
             
              
-            x = cursoService.add(data)
-            return jsonify(x),200
+            cursoService.add(data)
+            return jsonify({"mensaje": "Curso registrado correctamente"}), 201
 
 
 

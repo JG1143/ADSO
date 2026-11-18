@@ -40,8 +40,8 @@ class mat_evaController:
                     return jsonify({"mensaje":"la mat_id debe ser numero entero"}), 400
 
 
-                x = mat_evaService.add(data)
-                return jsonify(x),200
+                mat_evaService.add(data)
+                return jsonify({"mensaje": "Nota de matrícula registrada correctamente"}), 201
                 
                 
                 

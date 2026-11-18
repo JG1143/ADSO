@@ -47,8 +47,8 @@ class evaluacionController:
                 return jsonify({"mensaje": "el formato de fecha es invalido  debe ser yyyy-mm-dd"}), 400
 
 
-            x = evaluacionService.add(data)
-            return jsonify(x),200
+            evaluacionService.add(data)
+            return jsonify({"mensaje": "Evaluación registrada correctamente"}), 201
 
 
 

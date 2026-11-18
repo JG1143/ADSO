@@ -50,8 +50,8 @@ class imparteController:
 
 
 
-            x = imparteService.add(data)
-            return jsonify(x),200
+            imparteService.add(data)
+            return jsonify({"mensaje": "Asignación registrada correctamente"}), 201
 
 
 

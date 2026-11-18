@@ -53,8 +53,8 @@ class PersonaController:
 
 
                 
-                x = personaService.add(data)
-                return jsonify(x),200
+                personaService.add(data)
+                return jsonify({"mensaje": "Persona registrada correctamente"}), 201
                                 
                                 
                                 
