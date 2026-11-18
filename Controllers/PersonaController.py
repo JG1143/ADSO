@@ -54,7 +54,7 @@ class PersonaController:
 
                 
                 x = personaService.add(data)
-                return jsonify(x),200
+                return jsonify(x),201
                                 
                                 
                                 
